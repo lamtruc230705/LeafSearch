@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="vi">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   LeafSearch PTIT &mdash; Hệ thống t&igrave;m kiếm ảnh l&aacute; c&acirc;y
+  </title>
+  <link href="/assets/styles.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div class="overlay" id="overlay">
+  </div>
+  <div class="app">
+   <aside class="sidebar" id="sidebar">
+    <div class="brand">
+     <div class="brand-icon">
+      🍃
+     </div>
+     <div>
+      <b>
+       LeafSearch
+       <span style="color:#add68c">
+        .
+       </span>
+      </b>
+      <small>
+       PTIT &bull; MULTIMEDIA LAB
+      </small>
+     </div>
+    </div>
+    <div class="sidebar-label">
+     KH&Ocirc;NG GIAN NGHI&Ecirc;N CỨU
+    </div>
+    <button class="nav-link active" data-page="overview">
+     <svg viewbox="0 0 24 24">
+      <rect height="8" rx="2" width="8" x="3" y="3">
+      </rect>
+      <rect height="8" rx="2" width="8" x="13" y="3">
+      </rect>
+      <rect height="8" rx="2" width="8" x="3" y="13">
+      </rect>
+      <rect height="8" rx="2" width="8" x="13" y="13">
+      </rect>
+     </svg>
+     Tổng quan
+    </button>
+    <button class="nav-link" data-page="search">
+     <svg viewbox="0 0 24 24">
+      <circle cx="10.5" cy="10.5" r="7">
+      </circle>
+      <path d="m16 16 5 5">
+      </path>
+     </svg>
+     T&igrave;m ảnh tương &dstrok;ồng
+    </button>
+    <button class="nav-link" data-page="library">
+     <svg viewbox="0 0 24 24">
+      <rect height="18" rx="2" width="18" x="3" y="3">
+      </rect>
+      <path d="M3 8h18M8 8v13">
+      </path>
+     </svg>
+     Thư viện ảnh
+    </button>
+    <button class="nav-link" data-page="features">
+     <svg viewbox="0 0 24 24">
+      <circle cx="12" cy="12" r="3">
+      </circle>
+      <path d="M12 2v7M12 15v7M2 12h7M15 12h7M5 5l5 5M14 14l5 5M19 5l-5 5M10 14l-5 5">
+      </path>
+     </svg>
+     Ph&acirc;n t&iacute;ch &dstrok;ặc trưng
+    </button>
+    <button class="nav-link" data-page="evaluation">
+     <svg viewbox="0 0 24 24">
+      <path d="M4 20V9m6 11V4m6 16v-8m5 8H2">
+      </path>
+     </svg>
+     &Dstrok;&aacute;nh gi&aacute; thuật to&aacute;n
+    </button>
+    <button class="nav-link" data-page="system">
+     <svg viewbox="0 0 24 24">
+      <rect height="6" rx="1" width="8" x="2" y="5">
+      </rect>
+      <rect height="6" rx="1" width="8" x="14" y="5">
+      </rect>
+      <rect height="6" rx="1" width="8" x="8" y="16">
+      </rect>
+      <path d="M6 11v2h12v-2M12 13v3">
+      </path>
+     </svg>
+     Kiến tr&uacute;c hệ thống
+    </button>
+    <div class="side-bottom">
+     <div class="side-chip">
+      <span class="dot">
+      </span>
+      API &amp; SQLite &middot; Dữ liệu thật
+     </div>
+     <div class="side-mini">
+      Trạng th&aacute;i hệ thống hiển thị ở &dstrok;ầu trang.
+      <br/>
+      Kết quả lấy trực tiếp từ cơ sở dữ liệu.
+     </div>
+    </div>
+   </aside>
+   <main class="main">
+    <header class="topbar">
+     <div style="display:flex;align-items:center;gap:13px">
+      <button class="mobile-menu" id="menuBtn">
+       ☰
+      </button>
+      <div class="breadcrumb">
+       Dự &aacute;n CSDL &dstrok;a phương tiện &nbsp; / &nbsp;
+       <strong id="crumb">
+        Tổng quan
+       </strong>
+      </div>
+     </div>
+     <div class="top-right">
+      <span class="pill">
+       ● leaf-v1 &nbsp;|&nbsp; Fullstack
+      </span>
+      <div class="avatar">
+       04
+      </div>
+     </div>
+    </header>
+    <div class="content">
+     <div class="status-banner" id="globalStatus">
+      &Dstrok;ang kiểm tra trạng th&aacute;i cơ sở dữ liệu&hellip;
+     </div>
+     <!-- OVERVIEW -->
+     <section class="screen active" id="page-overview">
+      <div class="overline">
+       Dự &aacute;n nh&oacute;m 04 &middot; PTIT 2026
+      </div>
+      <div class="hero">
+       <div>
+        <h1>
+         T&igrave;m kiếm ảnh l&aacute; c&acirc;y
+         <br/>
+         bằng &dstrok;ặc trưng thị gi&aacute;c.
+        </h1>
+        <p>
+         Một hệ thống tra cứu ảnh theo nội dung (CBIR): chuyển ảnh l&aacute; th&agrave;nh vector số, so s&aacute;nh &dstrok;ặc trưng v&agrave; xếp hạng c&aacute;c ảnh gần nhất.
+        </p>
+       </div>
+       <div class="hero-art">
+        <div class="art-text">
+         LEAF &bull; RESEARCH
+        </div>
+        <div id="heroLeaf">
+        </div>
+       </div>
+      </div>
+      <div class="grid-stats">
+       <div class="stat">
+        <div class="stat-symbol">
+         ▦
+        </div>
+        <div class="stat-title">
+         Ảnh &dstrok;&atilde; l&agrave;m sạch
+        </div>
+        <div class="stat-number">
+         1.685
+        </div>
+        <small>
+         PNG &middot; RGB &middot; 512 &times; 512 px
+        </small>
+       </div>
+       <div class="stat">
+        <div class="stat-symbol">
+         ◈
+        </div>
+        <div class="stat-title">
+         M&atilde; nh&oacute;m h&igrave;nh th&aacute;i
+        </div>
+        <div class="stat-number">
+         32
+        </div>
+        <small>
+         Kh&ocirc;ng &dstrok;ồng ngh&itilde;a 32 lo&agrave;i
+        </small>
+       </div>
+       <div class="stat">
+        <div class="stat-symbol">
+         ⌘
+        </div>
+        <div class="stat-title">
+         Chiều vector / ảnh
+        </div>
+        <div class="stat-number">
+         560
+        </div>
+        <small>
+         4 nh&oacute;m &dstrok;ặc trưng
+        </small>
+       </div>
+       <div class="stat">
+        <div class="stat-symbol">
+         &apid;
+        </div>
+        <div class="stat-title">
+         Bản ghi &dstrok;ặc trưng
+        </div>
+        <div class="stat-number">
+         6.740
+        </div>
+        <small>
+         4 vector &times; 1.685 ảnh
+        </small>
+       </div>
+      </div>
+      <div class="two-cols">
+       <div class="card">
+        <div class="card-heading">
+         <h2>
+          Ph&acirc;n chia tập dữ liệu
+         </h2>
+         <span class="small muted">
+          Seed 2026
+         </span>
+        </div>
+        <p class="small muted">
+         D&ugrave;ng gallery &dstrok;ể tra cứu; validation &dstrok;ể hiệu chỉnh; test &dstrok;ể &dstrok;&aacute;nh gi&aacute; &dstrok;ộc lập.
+        </p>
+        <div class="split-bars">
+         <i>
+         </i>
+         <i>
+         </i>
+         <i>
+         </i>
+        </div>
+        <div class="legends">
+         <div class="legend" style="--c:#377756">
+          Gallery
+          <strong>
+           1.345
+          </strong>
+         </div>
+         <div class="legend" style="--c:#a7ce83">
+          Validation
+          <strong>
+           170
+          </strong>
+         </div>
+         <div class="legend" style="--c:#edc98b">
+          Test
+          <strong>
+           170
+          </strong>
+         </div>
+        </div>
+        <div class="callout">
+         <strong>
+          &Dstrok;&uacute;ng thiết kế dữ liệu:
+         </strong>
+         100 ảnh tr&ugrave;ng ch&iacute;nh x&aacute;c &dstrok;&atilde; &dstrok;ược loại khỏi bộ 1.785 ảnh gốc. 77 ảnh nh&oacute;m 04 &dstrok;ược &dstrok;&aacute;nh dấu cần kiểm tra mask.
+        </div>
+        <div class="section-footer">
+         <button class="btn primary" data-goto="search">
+          Bắt &dstrok;ầu t&igrave;m kiếm &nbsp;&rarr;
+         </button>
+         <button class="btn outline" data-goto="library">
+          Xem 32 nh&oacute;m ảnh
+         </button>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card-heading">
+         <h2>
+          Luồng xử l&yacute; tổng qu&aacute;t
+         </h2>
+         <span class="small muted">
+          4 giai &dstrok;oạn
+         </span>
+        </div>
+        <div class="mini-step">
+         <div class="step-num">
+          01
+         </div>
+         <div>
+          <b>
+           Nạp ảnh v&agrave; t&aacute;ch l&aacute;
+          </b>
+          <span>
+           Tiền xử l&yacute; m&agrave;u HSV, mask, khử nhiễu
+          </span>
+         </div>
+        </div>
+        <div class="mini-step">
+         <div class="step-num">
+          02
+         </div>
+         <div>
+          <b>
+           Tr&iacute;ch xuất 560 &dstrok;ặc trưng
+          </b>
+          <span>
+           M&agrave;u &middot; H&igrave;nh dạng &middot; &Dstrok;ường gờ &middot; Kết cấu
+          </span>
+         </div>
+        </div>
+        <div class="mini-step">
+         <div class="step-num">
+          03
+         </div>
+         <div>
+          <b>
+           T&igrave;m kiếm theo khoảng c&aacute;ch
+          </b>
+          <span>
+           Z-score gallery, RMS theo từng nh&oacute;m
+          </span>
+         </div>
+        </div>
+        <div class="mini-step">
+         <div class="step-num">
+          04
+         </div>
+         <div>
+          <b>
+           Trả Top 5 v&agrave; &dstrok;&aacute;nh gi&aacute;
+          </b>
+          <span>
+           Accuracy@1 &middot; P@5 &middot; MRR@5
+          </span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+     <!-- SEARCH -->
+     <section class="screen" id="page-search">
+      <div class="overline">
+       Chức n&abreve;ng trọng t&acirc;m &middot; Y&ecirc;u cầu IV
+      </div>
+      <div class="hero">
+       <div>
+        <h1>
+         T&igrave;m l&aacute; c&acirc;y tương &dstrok;ồng.
+        </h1>
+        <p>
+         Tải một ảnh l&aacute; mới, sử dụng 4 nh&oacute;m &dstrok;ặc trưng &dstrok;&atilde; x&aacute;c &dstrok;ịnh &dstrok;ể truy vấn Top 5 trong tập gallery.
+        </p>
+       </div>
+      </div>
+      <div class="search-layout">
+       <div class="card">
+        <div class="card-heading">
+         <h2>
+          01 / Ảnh truy vấn
+         </h2>
+         <span class="pill">
+          Input Image
+         </span>
+        </div>
+        <div aria-label="Tải ảnh l&aacute; c&acirc;y l&ecirc;n" class="drop" id="dropZone" role="button" tabindex="0">
+         <div class="upload-icon" id="uploadIcon">
+          &uarr;
+         </div>
+         <h3 id="dropTitle">
+          K&eacute;o thả ảnh l&aacute; c&acirc;y v&agrave;o &dstrok;&acirc;y
+         </h3>
+         <p id="dropText">
+          hoặc nhấp &dstrok;ể chọn ảnh tr&ecirc;n thiết bị
+         </p>
+         <img alt="Ảnh truy vấn &dstrok;&atilde; chọn" class="file-preview" id="filePreview"/>
+         <input accept="image/png,image/jpeg,image/webp" id="fileInput" type="file"/>
+         <span class="btn secondary" id="selectTrigger">
+          Chọn ảnh từ m&aacute;y
+         </span>
+        </div>
+        <div class="upload-hint">
+         <span>
+          PNG / JPG / WebP &middot; tối &dstrok;a 10 MB (quy &dstrok;ịnh giao diện)
+         </span>
+         <span>
+          Ưu ti&ecirc;n một l&aacute;, nền s&aacute;ng
+         </span>
+        </div>
+        <div class="error-msg" id="fileError">
+        </div>
+        <div class="upload-status">
+         <span class="dot">
+         </span>
+         <span id="fileStatus">
+          Chưa c&oacute; ảnh &dstrok;ược chọn.
+         </span>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card-heading">
+         <h2>
+          02 / Cấu h&igrave;nh truy vấn
+         </h2>
+         <button class="btn outline" id="resetWeights" style="padding:7px 10px;font-size:11px">
+          &Dstrok;ặt lại
+         </button>
+        </div>
+        <p class="small muted" style="margin-top:-4px;margin-bottom:23px">
+         Trọng số mặc &dstrok;ịnh theo b&aacute;o c&aacute;o; h&igrave;nh dạng &dstrok;ược ưu ti&ecirc;n.
+        </p>
+        <div class="weights">
+         <div class="weight-row">
+          <label for="weight-color">
+           M&agrave;u sắc
+          </label>
+          <input id="weight-color" max="100" min="0" type="range" value="25"/>
+          <output id="v-color">
+           25%
+          </output>
+         </div>
+         <div class="weight-row">
+          <label for="weight-shape">
+           H&igrave;nh dạng
+          </label>
+          <input id="weight-shape" max="100" min="0" type="range" value="45"/>
+          <output id="v-shape">
+           45%
+          </output>
+         </div>
+         <div class="weight-row">
+          <label for="weight-ridge">
+           &Dstrok;ường gờ / v&acirc;n
+          </label>
+          <input id="weight-ridge" max="100" min="0" type="range" value="15"/>
+          <output id="v-ridge">
+           15%
+          </output>
+         </div>
+         <div class="weight-row">
+          <label for="weight-texture">
+           Kết cấu
+          </label>
+          <input id="weight-texture" max="100" min="0" type="range" value="15"/>
+          <output id="v-texture">
+           15%
+          </output>
+         </div>
+        </div>
+        <div class="weight-note" id="weightsNote">
+         Tổng hiệu lực: 100% &middot; trọng số sẽ chuẩn h&oacute;a về 1.
+        </div>
+        <div class="callout">
+         T&igrave;m kiếm thực phải nạp
+         <b>
+          feature_stats
+         </b>
+         từ gallery, t&iacute;nh RMS tr&ecirc;n từng nh&oacute;m rồi kết hợp trọng số. D thấp hơn = gần hơn.
+        </div>
+        <button class="btn primary" id="searchBtn" style="width:100%;margin-top:20px">
+         &telrec; &nbsp; T&igrave;m kiếm Top 5
+        </button>
+       </div>
+      </div>
+      <div class="search-results" id="resultsContainer">
+       <div class="card-heading">
+        <h2 style="margin:0;font-size:19px">
+         03 / Kết quả gần nhất
+        </h2>
+        <span class="small muted">
+         Top 5 &middot; chỉ lấy ảnh gallery khi chạy thật
+        </span>
+       </div>
+       <div class="empty" id="emptyResults">
+        <span class="empty-icon">
+         ❧
+        </span>
+        <b>
+         Chưa c&oacute; kết quả t&igrave;m kiếm
+        </b>
+        <div style="margin-top:5px;font-size:12px">
+         Tải một ảnh l&aacute; c&acirc;y l&ecirc;n rồi bấm T&igrave;m kiếm Top 5.
+        </div>
+       </div>
+       <div class="result-grid" id="resultGrid" style="display:none">
+       </div>
+       <div class="callout warn" id="demoNotice" style="display:none">
+        Kết quả thuật to&aacute;n sẽ xuất hiện ở &dstrok;&acirc;y sau khi t&igrave;m kiếm.
+       </div>
+      </div>
+     </section>
+     <!-- LIBRARY -->
+     <section class="screen" id="page-library">
+      <div class="overline">
+       Dữ liệu &dstrok;ầu v&agrave;o &middot; Y&ecirc;u cầu I
+      </div>
+      <div class="hero">
+       <div>
+        <h1>
+         Thư viện 32 m&atilde; nh&oacute;m.
+        </h1>
+        <p>
+         Danh mục nh&oacute;m h&igrave;nh th&aacute;i v&agrave; ảnh thật &dstrok;ang lưu trong SQLite; nhấp v&agrave;o nh&oacute;m &dstrok;ể xem ảnh.
+        </p>
+       </div>
+      </div>
+      <div class="toolbar">
+       <div class="search-box">
+        <span>
+         &telrec;
+        </span>
+        <input id="groupFilter" placeholder="T&igrave;m m&atilde; nh&oacute;m, v&iacute; dụ 04 hoặc 25..." type="text"/>
+       </div>
+       <select class="select" id="sortGroups">
+        <option value="asc">
+         M&atilde; nh&oacute;m: t&abreve;ng dần
+        </option>
+        <option value="desc">
+         M&atilde; nh&oacute;m: giảm dần
+        </option>
+        <option value="count">
+         Số ảnh: nhiều nhất
+        </option>
+        <option value="few">
+         Số ảnh: &iacute;t nhất
+        </option>
+       </select>
+       <span class="pill" id="groupCount">
+        32 nh&oacute;m
+       </span>
+      </div>
+      <div class="library-grid" id="libraryGrid">
+      </div>
+      <div class="library-results" id="libraryResults">
+      </div>
+      <div class="callout warn">
+       Lưu &yacute;: T&ecirc;n ảnh thực theo dạng
+       <b>
+        g.s.png
+       </b>
+       . M&atilde; nh&oacute;m = phần trước dấu chấm &dstrok;ầu ti&ecirc;n của t&ecirc;n file. Thẻ nh&oacute;m lấy ảnh &dstrok;ại diện từ SQLite; c&oacute; thể nhấp &dstrok;ể xem ảnh thực tế.
+      </div>
+     </section>
+     <!-- FEATURES -->
+     <section class="screen" id="page-features">
+      <div class="overline">
+       Xử l&yacute; ảnh &middot; Y&ecirc;u cầu II&ndash;III
+      </div>
+      <div class="hero">
+       <div>
+        <h1>
+         Giải th&iacute;ch pipeline tr&iacute;ch xuất.
+        </h1>
+        <p>
+         Mỗi ảnh hợp lệ &dstrok;ược chuẩn h&oacute;a v&agrave; &aacute;nh xạ th&agrave;nh 4 vector số, phục vụ lưu trữ trong SQLite v&agrave; so s&aacute;nh khoảng c&aacute;ch.
+        </p>
+       </div>
+      </div>
+      <div class="card">
+       <div class="card-heading">
+        <h2>
+         Chuỗi tiền xử l&yacute; ảnh leaf-v1
+        </h2>
+        <span class="pill">
+         OpenCV &middot; NumPy &middot; scikit-image
+        </span>
+       </div>
+       <div class="flow-line">
+        <div class="flow-box">
+         <div class="n">
+          01
+         </div>
+         <h3>
+          &Dstrok;ọc ảnh &dstrok;ầu v&agrave;o
+         </h3>
+         <p>
+          Ảnh RGB 512&times;512 v&agrave; th&ocirc;ng tin m&atilde; nh&oacute;m, checksum.
+         </p>
+        </div>
+        <div class="flow-box">
+         <div class="n">
+          02
+         </div>
+         <h3>
+          Ph&acirc;n &dstrok;oạn l&aacute;
+         </h3>
+         <p>
+          HSV: (S&gt;33 &amp; V&lt;252) hoặc V&lt;155. Mask nhị ph&acirc;n.
+         </p>
+        </div>
+        <div class="flow-box">
+         <div class="n">
+          03
+         </div>
+         <h3>
+          L&agrave;m sạch mask
+         </h3>
+         <p>
+          Morphology opening 3&times;3; closing 7&times;7; contour lớn nhất.
+         </p>
+        </div>
+        <div class="flow-box">
+         <div class="n">
+          04
+         </div>
+         <h3>
+          Chuẩn h&oacute;a vị tr&iacute;
+         </h3>
+         <p>
+          Giữ tỷ lệ khung l&aacute;; cạnh d&agrave;i &asymp;440 px tr&ecirc;n nền 512&times;512.
+         </p>
+        </div>
+       </div>
+       <div class="callout warn">
+        <strong>
+         Kiểm so&aacute;t chất lượng:
+        </strong>
+        Hệ thống tự &dstrok;&aacute;nh dấu mặt nạ c&oacute; nguy cơ bất thường; l&aacute; hẹp hoặc c&oacute; phần t&aacute;ch rời c&oacute; thể bị mất v&ugrave;ng. H&atilde;y d&ugrave;ng trang Thư viện &dstrok;ể kiểm tra ảnh thật.
+       </div>
+      </div>
+      <div class="card topspace">
+       <div class="card-heading">
+        <h2>
+         Vector 560 chiều / ảnh
+        </h2>
+        <span class="small muted">
+         F(I) &isin; &reals;⁵⁶⁰
+        </span>
+       </div>
+       <div class="feature-rows">
+        <div class="feature-row">
+         <div class="feature-number">
+          326
+         </div>
+         <b>
+          01 &middot; M&agrave;u sắc
+         </b>
+         <p>
+          HSV, Lab, RGB moments, hue, entropy, Excess Green.
+         </p>
+        </div>
+        <div class="feature-row">
+         <div class="feature-number">
+          145
+         </div>
+         <b>
+          02 &middot; H&igrave;nh dạng
+         </b>
+         <p>
+          H&igrave;nh học, g&oacute;c rẽ contour, Fourier &dstrok;ường bao.
+         </p>
+        </div>
+        <div class="feature-row">
+         <div class="feature-number">
+          41
+         </div>
+         <b>
+          03 &middot; Gờ / v&acirc;n ứng vi&ecirc;n
+         </b>
+         <p>
+          Hessian, skeleton, hướng, &dstrok;ộ nhất qu&aacute;n.
+         </p>
+        </div>
+        <div class="feature-row">
+         <div class="feature-number">
+          48
+         </div>
+         <b>
+          04 &middot; Kết cấu bề mặt
+         </b>
+         <p>
+          GLCM: 18 v&agrave; LBP: 30 chiều.
+         </p>
+        </div>
+       </div>
+      </div>
+      <div class="card topspace">
+       <div class="card-heading">
+        <h2>
+         C&ocirc;ng thức t&igrave;m kiếm
+        </h2>
+        <span class="small muted">
+         z-score &middot; RMS &middot; Weighted sum
+        </span>
+       </div>
+       <div class="formula">
+        zⱼ = (xⱼ &minus; &mu;ⱼ) / scaleⱼ          (&mu;, scale chỉ t&iacute;nh từ gallery)
+Dg(Q, I) = &radic;[meanⱼ (zg(Q)ⱼ &minus; zg(I)ⱼ)&sup2;]
+D = 0.25&middot;D_m&agrave;u + 0.45&middot;D_h&igrave;nh + 0.15&middot;D_gờ + 0.15&middot;D_kết_cấu
+       </div>
+       <p class="small muted">
+        Kh&ocirc;ng tự diễn giải D hoặc &dstrok;iểm quy &dstrok;ổi từ D như x&aacute;c suất &dstrok;&uacute;ng lo&agrave;i. Kết quả Top 5 cần &dstrok;ược sắp theo D t&abreve;ng dần.
+       </p>
+      </div>
+     </section>
+     <!-- EVALUATION -->
+     <section class="screen" id="page-evaluation">
+      <div class="overline">
+       &Dstrok;&aacute;nh gi&aacute; thực nghiệm &middot; Y&ecirc;u cầu IV
+      </div>
+      <div class="hero">
+       <div>
+        <h1>
+         &Dstrok;o chất lượng truy vấn.
+        </h1>
+        <p>
+         Accuracy@1, Precision@5 v&agrave; MRR@5 &dstrok;ược t&iacute;nh trực tiếp từ tập test hoặc validation, kh&ocirc;ng &dstrok;iền số liệu giả.
+        </p>
+       </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+       <button class="btn primary" id="runEvaluation">
+        Chạy &dstrok;&aacute;nh gi&aacute; tr&ecirc;n tập TEST
+       </button>
+       <button class="btn outline" id="runValidation">
+        &Dstrok;&aacute;nh gi&aacute; VALIDATION
+       </button>
+      </div>
+      <div class="callout warn" style="margin-bottom:16px">
+       <strong>Lưu ý về độ tin cậy đánh giá:</strong> công cụ pHash đã đánh dấu các cặp
+       có thể gần trùng giữa gallery/validation/test; cần kiểm tra thủ công
+       <code>data/near_duplicate_review.csv</code>. Các chỉ số trong trang này là
+       kết quả đo trên cách chia tập hiện tại, không phải độ chính xác nhận dạng loài
+       trên ảnh hoàn toàn độc lập.
+      </div>
+      <div class="info-line" id="evaluationMessage">
+       Chưa chạy &dstrok;&aacute;nh gi&aacute; trong phi&ecirc;n n&agrave;y.
+      </div>
+      <div class="metric-grid">
+       <div class="metric">
+        <small>
+         Accuracy@1
+        </small>
+        <div class="pending" id="metricAccuracy">
+         Chưa &dstrok;o
+        </div>
+        <div class="formula-mini">
+         Tỷ lệ truy vấn c&oacute; kết quả &dstrok;ầu c&ugrave;ng m&atilde; nh&oacute;m
+        </div>
+       </div>
+       <div class="metric">
+        <small>
+         Precision@5
+        </small>
+        <div class="pending" id="metricPrecision">
+         Chưa &dstrok;o
+        </div>
+        <div class="formula-mini">
+         Tỷ lệ ảnh &dstrok;&uacute;ng nh&oacute;m trong 5 kết quả
+        </div>
+       </div>
+       <div class="metric">
+        <small>
+         MRR@5
+        </small>
+        <div class="pending" id="metricMrr">
+         Chưa &dstrok;o
+        </div>
+        <div class="formula-mini">
+         Trung b&igrave;nh nghịch &dstrok;ảo hạng &dstrok;&uacute;ng &dstrok;ầu ti&ecirc;n (top 5)
+        </div>
+       </div>
+      </div>
+      <div class="two-cols topspace">
+       <div class="card">
+        <div class="card-heading">
+         <h2>
+          Cấu h&igrave;nh &dstrok;&aacute;nh gi&aacute; hợp lệ
+         </h2>
+         <span class="pill" id="testCountChip">
+          Tập test: 0
+         </span>
+        </div>
+        <div class="result-row">
+         <span>
+          Gallery &ndash; ứng vi&ecirc;n &dstrok;ược t&igrave;m
+         </span>
+         <strong id="evalGallery">
+          0 ảnh
+         </strong>
+        </div>
+        <div class="result-row">
+         <span>
+          Validation &ndash; chọn cấu h&igrave;nh
+         </span>
+         <strong id="evalValidation">
+          0 ảnh
+         </strong>
+        </div>
+        <div class="result-row">
+         <span>
+          Test &ndash; truy vấn &dstrok;&aacute;nh gi&aacute; cuối
+         </span>
+         <strong id="evalTest">
+          0 ảnh
+         </strong>
+        </div>
+        <div class="result-row">
+         <span>
+          Trọng số mặc &dstrok;ịnh
+         </span>
+         <strong>
+          25 / 45 / 15 / 15
+         </strong>
+        </div>
+        <div class="result-row">
+         <span>
+          &Dstrok;ộ ch&iacute;nh x&aacute;c thực tế
+         </span>
+         <strong id="evaluationStatusValue">
+          Chưa chạy
+         </strong>
+        </div>
+        <div class="callout warn">
+         <b>
+          Chống r&ograve; rỉ dữ liệu:
+         </b>
+         kh&ocirc;ng ước lượng mean/scale từ test; cần r&agrave; so&aacute;t ảnh gần tr&ugrave;ng giữa c&aacute;c tập v&agrave; kh&ocirc;ng tối ưu trọng số trực tiếp tr&ecirc;n test.
+        </div>
+       <div class="card">
+        <div class="card-heading">
+         <h2>
+          Checklist trước khi b&aacute;o c&aacute;o
+         </h2>
+        </div>
+        <div class="check-row">
+         <div class="check">
+          &checkmark;
+         </div>
+         <div>
+          <b>
+           Ph&acirc;n tập r&otilde; r&agrave;ng
+          </b>
+          <p>
+           Ph&acirc;n biệt gallery, validation v&agrave; test; số lượng &dstrok;ược &dstrok;ọc từ SQLite.
+          </p>
+         </div>
+        </div>
+        <div class="check-row">
+         <div class="check">
+          &checkmark;
+         </div>
+         <div>
+          <b>
+           Kh&ocirc;ng c&ocirc;ng bố &dstrok;iểm giả
+          </b>
+          <p>
+           Chỉ b&aacute;o c&aacute;o kết quả sau khi chạy evaluation thực tế.
+          </p>
+         </div>
+        </div>
+        <div class="check-row">
+         <div class="check">
+          !
+         </div>
+         <div>
+          <b>
+           Kiểm tra near-duplicate
+          </b>
+          <p>
+           SHA-256 chỉ loại tr&ugrave;ng ch&iacute;nh x&aacute;c, kh&ocirc;ng ph&aacute;t hiện ảnh gần tr&ugrave;ng.
+          </p>
+         </div>
+        </div>
+        <div class="check-row">
+         <div class="check">
+          !
+         </div>
+         <div>
+          <b>
+           Nh&oacute;m &iacute;t ảnh
+          </b>
+          <p>
+           C&aacute;c nh&oacute;m rất &iacute;t ảnh c&oacute; thể c&oacute; &iacute;t hơn 5 ứng vi&ecirc;n ph&ugrave; hợp trong gallery.
+          </p>
+         </div>
+        </div>
+        <div class="check-row">
+         <div class="check">
+          !
+         </div>
+         <div>
+          <b>
+           Ph&acirc;n t&iacute;ch lỗi cụ thể
+          </b>
+          <p>
+           Gắn cờ mask kh&ocirc;ng tốt; minh họa truy vấn &dstrok;&uacute;ng v&agrave; sai.
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="card topspace" id="qualityPanel">
+       <div class="card-heading">
+        <h2>Rà soát chất lượng dữ liệu thực tế</h2>
+        <span class="pill">Kiểm tra mặt nạ &amp; nghi gần trùng</span>
+       </div>
+       <p class="small muted" id="qualityStats">Đang đọc thống kê từ SQLite…</p>
+       <p class="small muted">pHash chỉ đưa ra <strong>cặp nghi vấn</strong>, không tự động xác nhận bản sao.
+        Để kết luận rò rỉ dữ liệu, cần đối chiếu các cặp ảnh bằng mắt và nguồn gốc chụp.</p>
+       <a href="/api/quality/near-duplicates.csv" class="btn outline" id="qualityCsv" download
+          style="display:none;max-width:max-content;margin-bottom:14px">Tải danh sách nghi gần trùng (.csv)</a>
+       <div class="image-results-grid" id="qualityReviewGallery"></div>
+      </div>
+     </section>
+     <!-- SYSTEM -->
+     <section class="screen" id="page-system">
+      <div class="overline">
+       Thiết kế kỹ thuật &middot; BA &rarr; DEV
+      </div>
+      <div class="hero">
+       <div>
+        <h1>
+         Kiến tr&uacute;c triển khai.
+        </h1>
+        <p>
+         Giữ nguy&ecirc;n thuật to&aacute;n Python v&agrave; kho vector SQLite; th&ecirc;m lớp HTTP API v&agrave; giao diện web, tr&aacute;nh x&acirc;y lại pipeline kh&ocirc;ng cần thiết.
+        </p>
+       </div>
+      </div>
+      <div class="card">
+       <div class="card-heading">
+        <h2>
+         Luồng hệ thống khi t&igrave;m kiếm
+        </h2>
+        <span class="pill">
+         Client / API / SQLite
+        </span>
+       </div>
+       <div class="arch-diagram">
+        <div class="arch-box">
+         Tr&igrave;nh duyệt
+         <br/>
+         <small>
+          HTML &middot; CSS &middot; JS
+         </small>
+        </div>
+        <span class="arrow">
+         &rarr;
+        </span>
+        <div class="arch-box">
+         FastAPI
+         <br/>
+         <small>
+          POST /api/search
+         </small>
+        </div>
+        <span class="arrow">
+         &rarr;
+        </span>
+        <div class="arch-box">
+         leaf-v1
+         <br/>
+         <small>
+          Mask &middot; F560 &middot; RMS
+         </small>
+        </div>
+        <span class="arrow">
+         &harr;
+        </span>
+        <div class="arch-box">
+         SQLite
+         <br/>
+         <small>
+          Features + Stats
+         </small>
+        </div>
+       </div>
+       <div class="callout">
+        T&aacute;ch xử l&yacute;
+        <b>
+         ngoại tuyến
+        </b>
+        (tr&iacute;ch xuất 1.685 ảnh một lần) v&agrave;
+        <b>
+         trực tuyến
+        </b>
+        (chỉ tr&iacute;ch xuất một ảnh truy vấn). Truy vấn chỉ so s&aacute;nh với gallery.
+       </div>
+      </div>
+      <div class="card topspace">
+       <div class="card-heading">
+        <h2>
+         Giao diện API cần c&oacute;
+        </h2>
+        <span class="small muted">
+         &Dstrok;&atilde; triển khai trong backend
+        </span>
+       </div>
+       <div class="table-wrap">
+        <table>
+         <thead>
+          <tr>
+           <th>
+            Method
+           </th>
+           <th>
+            Endpoint
+           </th>
+           <th>
+            Nghiệp vụ
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+          <tr>
+           <td>
+            GET
+           </td>
+           <td>
+            <code>
+             /api/dashboard
+            </code>
+           </td>
+           <td>
+            Thống k&ecirc; dữ liệu hiện h&agrave;nh
+           </td>
+          </tr>
+          <tr>
+           <td>
+            GET
+           </td>
+           <td>
+            <code>
+             /api/categories
+            </code>
+           </td>
+           <td>
+            32 m&atilde; nh&oacute;m v&agrave; số lượng
+           </td>
+          </tr>
+          <tr>
+           <td>
+            GET
+           </td>
+           <td>
+            <code>
+             /api/images
+            </code>
+           </td>
+           <td>
+            Danh mục ảnh theo nh&oacute;m, ph&acirc;n tập
+           </td>
+          </tr>
+          <tr>
+           <td>
+            GET
+           </td>
+           <td>
+            <code>
+             /api/images/{id}
+            </code>
+           </td>
+           <td>
+            Ảnh gốc, mask, 4 vector, metadata
+           </td>
+          </tr>
+          <tr>
+           <td>
+            POST
+           </td>
+           <td>
+            <code>
+             /api/search
+            </code>
+           </td>
+           <td>
+            Upload ảnh, t&igrave;m Top 5, trả khoảng c&aacute;ch chi tiết
+           </td>
+          </tr>
+          <tr>
+           <td>
+            POST
+           </td>
+           <td>
+            <code>
+             /api/evaluate
+            </code>
+           </td>
+           <td>
+            Thực nghiệm &dstrok;&aacute;nh gi&aacute; tr&ecirc;n tập test
+           </td>
+          </tr>
+          <tr>
+           <td>
+            GET
+           </td>
+           <td>
+            <code>
+             /api/evaluations/{id}
+            </code>
+           </td>
+           <td>
+            &Dstrok;ọc số liệu kiểm thử &dstrok;&atilde; chạy
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+      </div>
+      <div class="card topspace">
+       <div class="card-heading">
+        <h2>
+         Trạng th&aacute;i hệ thống thực tế
+        </h2>
+       </div>
+       <div class="check-row">
+        <div class="check">
+         &checkmark;
+        </div>
+        <div>
+         <b>
+          &Dstrok;&atilde; thiết kế
+         </b>
+         <p>
+          &Dstrok;iều hướng, bộ lọc nh&oacute;m, upload/preview, trọng số, Top 5 kết quả thật, responsive.
+         </p>
+        </div>
+       </div>
+       <div class="check-row">
+        <div class="check">
+         !
+        </div>
+        <div>
+         <b>
+          &Dstrok;&atilde; triển khai backend
+         </b>
+         <p>
+          FastAPI, importer ZIP, SQLite, 4 nh&oacute;m vector, h&igrave;nh gốc/mask v&agrave; t&igrave;m Top 5 thật. Cần nhập ảnh &dstrok;ể chạy với dữ liệu ch&iacute;nh thức.
+         </p>
+        </div>
+       </div>
+       <div class="callout warn">
+        Dữ liệu v&agrave; c&aacute;c kết quả chỉ c&oacute; khi &dstrok;&atilde; nhập ZIP v&agrave; thực sự chạy thuật to&aacute;n từ FastAPI.
+       </div>
+      </div>
+     </section>
+    </div>
+    <footer class="footer">
+     LEAFSEARCH PTIT &middot; Bản thiết kế website BA phục vụ b&agrave;i tập lớn CSDL &dstrok;a phương tiện &middot; 2026 &middot; Dữ liệu v&agrave; thuật to&aacute;n theo b&aacute;o c&aacute;o Phần I&ndash;III
+    </footer>
+   </main>
+  </div>
+  <script src="/assets/app.js" type="module">
+  </script>
+  <div aria-label="Chi tiết ảnh" aria-modal="true" class="modal" id="detailModal" role="dialog">
+   <div class="modal-content" id="detailContent">
+   </div>
+  </div>
+ </body>
+</html>
