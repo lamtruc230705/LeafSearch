@@ -1,0 +1,13 @@
+# Ảnh/CSDL thực tế thường lớn và có thể có quyền sử dụng riêng
+/data/images/
+/data/*.sqlite
+/data/*.sqlite-*
+/data/*.previous
+/data/*.json
+*.zip
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.DS_Store
