@@ -1,0 +1,56 @@
+{
+  "source_zip_name": "Bộ dữ liệu thu thập.zip",
+  "source_zip_bytes": 169168594,
+  "source_zip_sha256": "d51c414ec5f0b2766cb2fb671450dcf5487d1a13b6007554bd19d724eaae5d95",
+  "dataset_images": 1685,
+  "groups": 32,
+  "feature_vectors": 6740,
+  "splits": {
+    "gallery": 1345,
+    "validation": 170,
+    "test": 170
+  },
+  "mask_review_count": 78,
+  "pipeline_version": "leaf-v1-web-1.0",
+  "evaluations": [
+    {
+      "id": 1,
+      "split": "validation",
+      "weights": {
+        "color": 0.25,
+        "shape": 0.45,
+        "ridge": 0.15,
+        "texture": 0.15
+      },
+      "metrics": {
+        "queries": 170,
+        "gallery_count": 1345,
+        "accuracy_at_1": 0.970588,
+        "precision_at_5": 0.943529,
+        "mrr_at_5": 0.979902,
+        "runtime_ms": 1081.4
+      },
+      "created_at": "2026-11-21 10:54:36"
+    },
+    {
+      "id": 2,
+      "split": "test",
+      "weights": {
+        "color": 0.25,
+        "shape": 0.45,
+        "ridge": 0.15,
+        "texture": 0.15
+      },
+      "metrics": {
+        "queries": 170,
+        "gallery_count": 1345,
+        "accuracy_at_1": 0.976471,
+        "precision_at_5": 0.930588,
+        "mrr_at_5": 0.987255,
+        "runtime_ms": 1092.3
+      },
+      "created_at": "2026-11-21 10:54:37"
+    }
+  ],
+  "sqlite_integrity_check": "ok"
+}

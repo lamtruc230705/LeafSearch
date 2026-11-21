@@ -1,0 +1,17 @@
+{
+  "split": "test",
+  "queries": 170,
+  "weight_profile": {
+    "color": 0.25,
+    "shape": 0.45,
+    "ridge": 0.15,
+    "texture": 0.15
+  },
+  "phash_threshold": 6,
+  "warning": "Kết quả stress-test pHash. Cặp nghi vấn KHÔNG phải bản sao đã xác nhận; loại nhầm mẫu hợp lệ có thể làm metric giảm. Không dùng kết quả để tối ưu cấu hình từ tập test.",
+  "queries_with_exclusions": 108,
+  "suspected_gallery_exclusions_total": 829,
+  "accuracy_at_1": 0.976471,
+  "precision_at_5": 0.928235,
+  "mrr_at_5": 0.987255
+}

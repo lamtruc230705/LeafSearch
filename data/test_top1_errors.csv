@@ -1,0 +1,5 @@
+﻿query_file,query_group,top1_file,top1_group,top1_distance,correct_in_top5
+6.39.png,06,29.57.png,29,0.815108,2
+14.40.png,14,17.11.png,17,1.823093,2
+16.37.png,16,24.8.png,24,0.340103,3
+28.42.png,28,31.12.png,31,0.23465,2
